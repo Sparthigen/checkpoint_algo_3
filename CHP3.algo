@@ -1,0 +1,34 @@
+
+
+
+PROCEDURE dot_product( VAR ps : INTEGER; v1, v2  : ARRAY_OF INTEGER)
+VAR
+    i, j : INTEGER
+BEGIN
+    FOR i FROM 0 TO v1.length STEP  1 DO
+        FOR j FROM 0 TO v2.length STEP 1  DO
+            ps := v1[i] * v2[j];
+        END_FOR
+    END_FOR
+END
+
+FUNCTION verifPS(ps) : STRING
+BEGIN
+    IF (ps = 0) THEN
+        RETURN "The two vectors are orthogonals"
+        ELSE 
+        RETURN "The two vectors are not Orthogonals"
+    END_IF
+END
+
+ALGORITHM orthOrNot
+VAR
+    v1, v2 : ARRAY_OF INTEGER
+    ps : INTEGER;
+    msg := STRING;
+BEGIN
+
+    dot_product(ps, v1, v2)
+    msg := verifPS(ps)
+    Write(msg)
+END
